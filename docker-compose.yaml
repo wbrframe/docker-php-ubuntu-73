@@ -1,0 +1,14 @@
+version: '3'
+services:
+    php:
+        build:
+            context: ./docker-configs/php
+        volumes:
+            - "./docker-configs/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
+            - "./docker-configs/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini"
+            - ".:/app:cached"
+        environment:
+            PHP_IDE_CONFIG: "serverName=Docker"
+
+volumes:
+    postgresdata:

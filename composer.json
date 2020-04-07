@@ -1,0 +1,38 @@
+{
+    "name": "wbrframe/docker-php-ubuntu-73",
+    "description": "Skeleton for PHP console application on Ubuntu",
+    "keywords": ["docker", "skeleton", "console", "php-fpm", "ubuntu"],
+    "homepage": "https://github.com/wbrframe/docker-php-ubuntu-73",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vaskevich Yevgeniy",
+            "email": "wbrframe@gmail.com",
+            "role": "Creator"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "phpstan/phpstan": "^0.12.18",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "scripts": {
+        "ci:pack": [
+            "@ci:code-style",
+            "@ci:static-analysis",
+            "@ci:composer-validate"
+        ],
+        "ci:composer-validate": "@composer validate --no-check-all --strict",
+        "ci:static-analysis": [
+            "vendor/bin/phpstan analyse -c phpstan.neon src/"
+        ],
+        "ci:code-style": "vendor/bin/php-cs-fixer fix --dry-run --config=.php_cs -v",
+        "ci:code-style-fix": "vendor/bin/php-cs-fixer fix --config=.php_cs -v"
+    }
+}
