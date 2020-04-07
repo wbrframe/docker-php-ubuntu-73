@@ -11,10 +11,4 @@ namespace App\Service;
  */
 class FooService
 {
-    private $test;
-
-    public function __construct()
-    {
-        $this->test = 'test';
-    }
 }
